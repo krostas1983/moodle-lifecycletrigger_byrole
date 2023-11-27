@@ -102,7 +102,7 @@ class byrole extends base_automatic {
 
         $invert = settings_manager::get_settings($triggerid, settings_type::TRIGGER)['invert'] && true;
 
-	$sql = "SELECT c.id
+        $sql = "SELECT c.id
             FROM {course} c
             WHERE c.id " . ($invert ? "" : "NOT") . " IN (
             SELECT e.courseid FROM {context} coursectx
@@ -162,7 +162,7 @@ class byrole extends base_automatic {
         return array(
             new instance_setting('roles', PARAM_SEQUENCE),
             new instance_setting('invert', PARAM_BOOL),
-	    new instance_setting('delay', PARAM_INT),
+            new instance_setting('delay', PARAM_INT),
         );
     }
 
@@ -194,7 +194,7 @@ class byrole extends base_automatic {
 	$mform->addElement('advcheckbox', 'invert', get_string('invert', 'lifecycletrigger_byrole'));
         $mform->setTye('invert', PARAM_BOOL);
 
-	$elementname = 'delay';
+        $elementname = 'delay';
         $mform->addElement('duration', $elementname, get_string('delay', 'lifecycletrigger_byrole'));
         $mform->addHelpButton('delay', 'delay', 'lifecycletrigger_byrole');
         $mform->setType($elementname, PARAM_INT);
